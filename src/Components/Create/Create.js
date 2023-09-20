@@ -21,8 +21,18 @@ const Create = () => {
   const handleSubmit = (e)=>{
       e.preventDefault()
 
+      if(!user){
+        showToast('Please Login')
+        return
+      }
+
       if(name.trim() === '' || category.trim() === '' || price.trim() === '' || !image){
         showToast('Fields are not filled')
+        return
+      }
+
+      if(parseFloat(price) <= 0){
+        showToast('price must greater than 0')
         return
       }
 
